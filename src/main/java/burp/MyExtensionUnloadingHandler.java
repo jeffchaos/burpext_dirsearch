@@ -1,2 +1,18 @@
-package burp;public class MyExtensionUnloadingHandler {
+package burp;
+
+import burp.api.montoya.MontoyaApi;
+import burp.api.montoya.extension.ExtensionUnloadingHandler;
+
+public class MyExtensionUnloadingHandler implements ExtensionUnloadingHandler {
+    private final MontoyaApi api;
+
+    public MyExtensionUnloadingHandler(MontoyaApi api) {
+        // 初始化代码
+        this.api = api;
+    }
+
+    @Override
+    public void extensionUnloaded() {
+        api.logging().logToOutput("MyExtension is being unloaded.");
+    }
 }
